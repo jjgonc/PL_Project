@@ -1,0 +1,22 @@
+[
+	{
+		"Número" : "3212132",
+		"Nome" : "Faísca Mcqueen",
+		"Cursos" : ["Teatro","Politica","Arquitertura"],
+		"Notas" : [12,13]
+	},
+	{
+		"Número" : "7734234324",
+		"Nome" : "Cristina Ferreira",
+		"Cursos" : ["Musica","Engenharia","Matematica"],
+		"Notas" : [17,12,20,11,12]
+	},
+	{
+		"Número" : "34234223",
+		"Nome" : "Afonso Henriques",
+		"Cursos" : ["Enfermagem","RI","Medicina","Comunicação"],
+		"Notas" : [18,19,19,20]
+	},
+	{
+
+]

@@ -1,0 +1,1395 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> phrase
+Rule 1     phrase -> lex yacc
+Rule 2     lex -> LEXMARKER literals ignore tokens functions
+Rule 3     literals -> LITERALS EQUAL CHARACTERS comment
+Rule 4     literals -> <empty>
+Rule 5     comment -> HASHTAGS words NEWLINE
+Rule 6     comment -> <empty>
+Rule 7     words -> words WORD
+Rule 8     words -> WORD
+Rule 9     ignore -> IGNORE EQUAL CHARACTERS comment
+Rule 10    ignore -> <empty>
+Rule 11    tokens -> TOKENS EQUAL SLEFTBRACKET tokenNames SRIGHTBRACKET comment
+Rule 12    tokens -> <empty>
+Rule 13    tokenNames -> tokenNames COMMA SQM UPPERWORD SQM
+Rule 14    tokenNames -> SQM UPPERWORD SQM
+Rule 15    functions -> functions function
+Rule 16    functions -> <empty>
+Rule 17    function -> RE LEFTBRACKET content RIGHTBRACKET comment
+Rule 18    content -> SQM UPPERWORD SQM COMMA EXPRESSION
+Rule 19    content -> SQM UPPERWORD SQM COMMA WORD
+Rule 20    content -> STRING COMMA EXPRESSION
+Rule 21    content -> CHARACTERS COMMA EXPRESSION
+Rule 22    yacc -> YACCMARKER precedence vars prods PERCENTAGE functionsyacc inityacc parse
+Rule 23    precedence -> PRECEDENCE EQUAL SLEFTBRACKET precedences SRIGHTBRACKET comment
+Rule 24    precedence -> <empty>
+Rule 25    precedences -> precedences tokenprecedence
+Rule 26    precedences -> <empty>
+Rule 27    tokenprecedence -> LEFTBRACKET rl COMMA nametokensprec RIGHTBRACKET COMMA
+Rule 28    rl -> SQM RIGHT SQM
+Rule 29    rl -> SQM LEFT SQM
+Rule 30    nametokensprec -> nametokensprec COMMA SQM UPPERWORD SQM
+Rule 31    nametokensprec -> nametokensprec COMMA SQM CHAR SQM
+Rule 32    nametokensprec -> SQM CHAR SQM
+Rule 33    nametokensprec -> SQM UPPERWORD SQM
+Rule 34    vars -> varsdesc varsaux comment
+Rule 35    varsdesc -> HASHTAG words NEWLINE
+Rule 36    varsaux -> <empty>
+Rule 37    varsaux -> varsaux var
+Rule 38    var -> CONTENTVAR changeline
+Rule 39    changeline -> NEWLINE
+Rule 40    changeline -> DOUBLENEWLINE
+Rule 41    prods -> prods prod
+Rule 42    prods -> <empty>
+Rule 43    prod -> WORD WORD expProd LEFTCOTTER CHARS RIGHTCOTTER
+Rule 44    expProd -> expProd UPPERWORD
+Rule 45    expProd -> expProd WORD
+Rule 46    expProd -> expProd SQM CHAR SQM
+Rule 47    expProd -> expProd SQM EQUAL SQM
+Rule 48    expProd -> expProd SQM LEFTBRACKET SQM
+Rule 49    expProd -> expProd SQM RIGHTBRACKET SQM
+Rule 50    expProd -> expProd markerPrec
+Rule 51    expProd -> <empty>
+Rule 52    markerPrec -> PRECTAG UPPERWORD
+Rule 53    functionsyacc -> functionsyacc functionyacc comment
+Rule 54    functionsyacc -> <empty>
+Rule 55    functionyacc -> FUNCTION BODYFUNCTIONLINE bodyfunction BODYFUNCTIONFINAL
+Rule 56    bodyfunction -> bodyfunction BODYFUNCTIONLINE
+Rule 57    bodyfunction -> <empty>
+Rule 58    parse -> WORD LEFTBRACKET CHARACTERS RIGHTBRACKET comment
+Rule 59    inityacc -> WORD EQUAL INITYACC comment
+
+Terminals, with rules where they appear
+
+BODYFUNCTIONFINAL    : 55
+BODYFUNCTIONLINE     : 55 56
+CHAR                 : 31 32 46
+CHARACTERS           : 3 9 21 58
+CHARS                : 43
+COMMA                : 13 18 19 20 21 27 27 30 31
+CONTENTVAR           : 38
+DOUBLENEWLINE        : 40
+EQUAL                : 3 9 11 23 47 59
+EXPRESSION           : 18 20 21
+FUNCTION             : 55
+HASHTAG              : 35
+HASHTAGS             : 5
+IGNORE               : 9
+INITYACC             : 59
+LEFT                 : 29
+LEFTBRACKET          : 17 27 48 58
+LEFTCOTTER           : 43
+LEXMARKER            : 2
+LITERALS             : 3
+NEWLINE              : 5 35 39
+PERCENTAGE           : 22
+PRECEDENCE           : 23
+PRECTAG              : 52
+RE                   : 17
+RIGHT                : 28
+RIGHTBRACKET         : 17 27 49 58
+RIGHTCOTTER          : 43
+SLEFTBRACKET         : 11 23
+SQM                  : 13 13 14 14 18 18 19 19 28 28 29 29 30 30 31 31 32 32 33 33 46 46 47 47 48 48 49 49
+SRIGHTBRACKET        : 11 23
+STRING               : 20
+TOKENS               : 11
+UPPERWORD            : 13 14 18 19 30 33 44 52
+WORD                 : 7 8 19 43 43 45 58 59
+YACCMARKER           : 22
+error                : 
+
+Nonterminals, with rules where they appear
+
+bodyfunction         : 55 56
+changeline           : 38
+comment              : 3 9 11 17 23 34 53 58 59
+content              : 17
+expProd              : 43 44 45 46 47 48 49 50
+function             : 15
+functions            : 2 15
+functionsyacc        : 22 53
+functionyacc         : 53
+ignore               : 2
+inityacc             : 22
+lex                  : 1
+literals             : 2
+markerPrec           : 50
+nametokensprec       : 27 30 31
+parse                : 22
+phrase               : 0
+precedence           : 22
+precedences          : 23 25
+prod                 : 41
+prods                : 22 41
+rl                   : 27
+tokenNames           : 11 13
+tokenprecedence      : 25
+tokens               : 2
+var                  : 37
+vars                 : 22
+varsaux              : 34 37
+varsdesc             : 34
+words                : 5 7 35
+yacc                 : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . phrase
+    (1) phrase -> . lex yacc
+    (2) lex -> . LEXMARKER literals ignore tokens functions
+
+    LEXMARKER       shift and go to state 3
+
+    phrase                         shift and go to state 1
+    lex                            shift and go to state 2
+
+state 1
+
+    (0) S' -> phrase .
+
+
+
+state 2
+
+    (1) phrase -> lex . yacc
+    (22) yacc -> . YACCMARKER precedence vars prods PERCENTAGE functionsyacc inityacc parse
+
+    YACCMARKER      shift and go to state 5
+
+    yacc                           shift and go to state 4
+
+state 3
+
+    (2) lex -> LEXMARKER . literals ignore tokens functions
+    (3) literals -> . LITERALS EQUAL CHARACTERS comment
+    (4) literals -> .
+
+    LITERALS        shift and go to state 7
+    IGNORE          reduce using rule 4 (literals -> .)
+    TOKENS          reduce using rule 4 (literals -> .)
+    RE              reduce using rule 4 (literals -> .)
+    YACCMARKER      reduce using rule 4 (literals -> .)
+
+    literals                       shift and go to state 6
+
+state 4
+
+    (1) phrase -> lex yacc .
+
+    $end            reduce using rule 1 (phrase -> lex yacc .)
+
+
+state 5
+
+    (22) yacc -> YACCMARKER . precedence vars prods PERCENTAGE functionsyacc inityacc parse
+    (23) precedence -> . PRECEDENCE EQUAL SLEFTBRACKET precedences SRIGHTBRACKET comment
+    (24) precedence -> .
+
+    PRECEDENCE      shift and go to state 9
+    HASHTAG         reduce using rule 24 (precedence -> .)
+
+    precedence                     shift and go to state 8
+
+state 6
+
+    (2) lex -> LEXMARKER literals . ignore tokens functions
+    (9) ignore -> . IGNORE EQUAL CHARACTERS comment
+    (10) ignore -> .
+
+    IGNORE          shift and go to state 11
+    TOKENS          reduce using rule 10 (ignore -> .)
+    RE              reduce using rule 10 (ignore -> .)
+    YACCMARKER      reduce using rule 10 (ignore -> .)
+
+    ignore                         shift and go to state 10
+
+state 7
+
+    (3) literals -> LITERALS . EQUAL CHARACTERS comment
+
+    EQUAL           shift and go to state 12
+
+
+state 8
+
+    (22) yacc -> YACCMARKER precedence . vars prods PERCENTAGE functionsyacc inityacc parse
+    (34) vars -> . varsdesc varsaux comment
+    (35) varsdesc -> . HASHTAG words NEWLINE
+
+    HASHTAG         shift and go to state 15
+
+    vars                           shift and go to state 13
+    varsdesc                       shift and go to state 14
+
+state 9
+
+    (23) precedence -> PRECEDENCE . EQUAL SLEFTBRACKET precedences SRIGHTBRACKET comment
+
+    EQUAL           shift and go to state 16
+
+
+state 10
+
+    (2) lex -> LEXMARKER literals ignore . tokens functions
+    (11) tokens -> . TOKENS EQUAL SLEFTBRACKET tokenNames SRIGHTBRACKET comment
+    (12) tokens -> .
+
+    TOKENS          shift and go to state 18
+    RE              reduce using rule 12 (tokens -> .)
+    YACCMARKER      reduce using rule 12 (tokens -> .)
+
+    tokens                         shift and go to state 17
+
+state 11
+
+    (9) ignore -> IGNORE . EQUAL CHARACTERS comment
+
+    EQUAL           shift and go to state 19
+
+
+state 12
+
+    (3) literals -> LITERALS EQUAL . CHARACTERS comment
+
+    CHARACTERS      shift and go to state 20
+
+
+state 13
+
+    (22) yacc -> YACCMARKER precedence vars . prods PERCENTAGE functionsyacc inityacc parse
+    (41) prods -> . prods prod
+    (42) prods -> .
+
+    PERCENTAGE      reduce using rule 42 (prods -> .)
+    WORD            reduce using rule 42 (prods -> .)
+
+    prods                          shift and go to state 21
+
+state 14
+
+    (34) vars -> varsdesc . varsaux comment
+    (36) varsaux -> .
+    (37) varsaux -> . varsaux var
+
+    HASHTAGS        reduce using rule 36 (varsaux -> .)
+    CONTENTVAR      reduce using rule 36 (varsaux -> .)
+    PERCENTAGE      reduce using rule 36 (varsaux -> .)
+    WORD            reduce using rule 36 (varsaux -> .)
+
+    varsaux                        shift and go to state 22
+
+state 15
+
+    (35) varsdesc -> HASHTAG . words NEWLINE
+    (7) words -> . words WORD
+    (8) words -> . WORD
+
+    WORD            shift and go to state 24
+
+    words                          shift and go to state 23
+
+state 16
+
+    (23) precedence -> PRECEDENCE EQUAL . SLEFTBRACKET precedences SRIGHTBRACKET comment
+
+    SLEFTBRACKET    shift and go to state 25
+
+
+state 17
+
+    (2) lex -> LEXMARKER literals ignore tokens . functions
+    (15) functions -> . functions function
+    (16) functions -> .
+
+    RE              reduce using rule 16 (functions -> .)
+    YACCMARKER      reduce using rule 16 (functions -> .)
+
+    functions                      shift and go to state 26
+
+state 18
+
+    (11) tokens -> TOKENS . EQUAL SLEFTBRACKET tokenNames SRIGHTBRACKET comment
+
+    EQUAL           shift and go to state 27
+
+
+state 19
+
+    (9) ignore -> IGNORE EQUAL . CHARACTERS comment
+
+    CHARACTERS      shift and go to state 28
+
+
+state 20
+
+    (3) literals -> LITERALS EQUAL CHARACTERS . comment
+    (5) comment -> . HASHTAGS words NEWLINE
+    (6) comment -> .
+
+    HASHTAGS        shift and go to state 30
+    IGNORE          reduce using rule 6 (comment -> .)
+    TOKENS          reduce using rule 6 (comment -> .)
+    RE              reduce using rule 6 (comment -> .)
+    YACCMARKER      reduce using rule 6 (comment -> .)
+
+    comment                        shift and go to state 29
+
+state 21
+
+    (22) yacc -> YACCMARKER precedence vars prods . PERCENTAGE functionsyacc inityacc parse
+    (41) prods -> prods . prod
+    (43) prod -> . WORD WORD expProd LEFTCOTTER CHARS RIGHTCOTTER
+
+    PERCENTAGE      shift and go to state 31
+    WORD            shift and go to state 33
+
+    prod                           shift and go to state 32
+
+state 22
+
+    (34) vars -> varsdesc varsaux . comment
+    (37) varsaux -> varsaux . var
+    (5) comment -> . HASHTAGS words NEWLINE
+    (6) comment -> .
+    (38) var -> . CONTENTVAR changeline
+
+    HASHTAGS        shift and go to state 30
+    PERCENTAGE      reduce using rule 6 (comment -> .)
+    WORD            reduce using rule 6 (comment -> .)
+    CONTENTVAR      shift and go to state 36
+
+    comment                        shift and go to state 34
+    var                            shift and go to state 35
+
+state 23
+
+    (35) varsdesc -> HASHTAG words . NEWLINE
+    (7) words -> words . WORD
+
+    NEWLINE         shift and go to state 37
+    WORD            shift and go to state 38
+
+
+state 24
+
+    (8) words -> WORD .
+
+    NEWLINE         reduce using rule 8 (words -> WORD .)
+    WORD            reduce using rule 8 (words -> WORD .)
+
+
+state 25
+
+    (23) precedence -> PRECEDENCE EQUAL SLEFTBRACKET . precedences SRIGHTBRACKET comment
+    (25) precedences -> . precedences tokenprecedence
+    (26) precedences -> .
+
+    SRIGHTBRACKET   reduce using rule 26 (precedences -> .)
+    LEFTBRACKET     reduce using rule 26 (precedences -> .)
+
+    precedences                    shift and go to state 39
+
+state 26
+
+    (2) lex -> LEXMARKER literals ignore tokens functions .
+    (15) functions -> functions . function
+    (17) function -> . RE LEFTBRACKET content RIGHTBRACKET comment
+
+    YACCMARKER      reduce using rule 2 (lex -> LEXMARKER literals ignore tokens functions .)
+    RE              shift and go to state 41
+
+    function                       shift and go to state 40
+
+state 27
+
+    (11) tokens -> TOKENS EQUAL . SLEFTBRACKET tokenNames SRIGHTBRACKET comment
+
+    SLEFTBRACKET    shift and go to state 42
+
+
+state 28
+
+    (9) ignore -> IGNORE EQUAL CHARACTERS . comment
+    (5) comment -> . HASHTAGS words NEWLINE
+    (6) comment -> .
+
+    HASHTAGS        shift and go to state 30
+    TOKENS          reduce using rule 6 (comment -> .)
+    RE              reduce using rule 6 (comment -> .)
+    YACCMARKER      reduce using rule 6 (comment -> .)
+
+    comment                        shift and go to state 43
+
+state 29
+
+    (3) literals -> LITERALS EQUAL CHARACTERS comment .
+
+    IGNORE          reduce using rule 3 (literals -> LITERALS EQUAL CHARACTERS comment .)
+    TOKENS          reduce using rule 3 (literals -> LITERALS EQUAL CHARACTERS comment .)
+    RE              reduce using rule 3 (literals -> LITERALS EQUAL CHARACTERS comment .)
+    YACCMARKER      reduce using rule 3 (literals -> LITERALS EQUAL CHARACTERS comment .)
+
+
+state 30
+
+    (5) comment -> HASHTAGS . words NEWLINE
+    (7) words -> . words WORD
+    (8) words -> . WORD
+
+    WORD            shift and go to state 24
+
+    words                          shift and go to state 44
+
+state 31
+
+    (22) yacc -> YACCMARKER precedence vars prods PERCENTAGE . functionsyacc inityacc parse
+    (53) functionsyacc -> . functionsyacc functionyacc comment
+    (54) functionsyacc -> .
+
+    WORD            reduce using rule 54 (functionsyacc -> .)
+    FUNCTION        reduce using rule 54 (functionsyacc -> .)
+
+    functionsyacc                  shift and go to state 45
+
+state 32
+
+    (41) prods -> prods prod .
+
+    PERCENTAGE      reduce using rule 41 (prods -> prods prod .)
+    WORD            reduce using rule 41 (prods -> prods prod .)
+
+
+state 33
+
+    (43) prod -> WORD . WORD expProd LEFTCOTTER CHARS RIGHTCOTTER
+
+    WORD            shift and go to state 46
+
+
+state 34
+
+    (34) vars -> varsdesc varsaux comment .
+
+    PERCENTAGE      reduce using rule 34 (vars -> varsdesc varsaux comment .)
+    WORD            reduce using rule 34 (vars -> varsdesc varsaux comment .)
+
+
+state 35
+
+    (37) varsaux -> varsaux var .
+
+    HASHTAGS        reduce using rule 37 (varsaux -> varsaux var .)
+    CONTENTVAR      reduce using rule 37 (varsaux -> varsaux var .)
+    PERCENTAGE      reduce using rule 37 (varsaux -> varsaux var .)
+    WORD            reduce using rule 37 (varsaux -> varsaux var .)
+
+
+state 36
+
+    (38) var -> CONTENTVAR . changeline
+    (39) changeline -> . NEWLINE
+    (40) changeline -> . DOUBLENEWLINE
+
+    NEWLINE         shift and go to state 48
+    DOUBLENEWLINE   shift and go to state 49
+
+    changeline                     shift and go to state 47
+
+state 37
+
+    (35) varsdesc -> HASHTAG words NEWLINE .
+
+    HASHTAGS        reduce using rule 35 (varsdesc -> HASHTAG words NEWLINE .)
+    CONTENTVAR      reduce using rule 35 (varsdesc -> HASHTAG words NEWLINE .)
+    PERCENTAGE      reduce using rule 35 (varsdesc -> HASHTAG words NEWLINE .)
+    WORD            reduce using rule 35 (varsdesc -> HASHTAG words NEWLINE .)
+
+
+state 38
+
+    (7) words -> words WORD .
+
+    NEWLINE         reduce using rule 7 (words -> words WORD .)
+    WORD            reduce using rule 7 (words -> words WORD .)
+
+
+state 39
+
+    (23) precedence -> PRECEDENCE EQUAL SLEFTBRACKET precedences . SRIGHTBRACKET comment
+    (25) precedences -> precedences . tokenprecedence
+    (27) tokenprecedence -> . LEFTBRACKET rl COMMA nametokensprec RIGHTBRACKET COMMA
+
+    SRIGHTBRACKET   shift and go to state 50
+    LEFTBRACKET     shift and go to state 52
+
+    tokenprecedence                shift and go to state 51
+
+state 40
+
+    (15) functions -> functions function .
+
+    RE              reduce using rule 15 (functions -> functions function .)
+    YACCMARKER      reduce using rule 15 (functions -> functions function .)
+
+
+state 41
+
+    (17) function -> RE . LEFTBRACKET content RIGHTBRACKET comment
+
+    LEFTBRACKET     shift and go to state 53
+
+
+state 42
+
+    (11) tokens -> TOKENS EQUAL SLEFTBRACKET . tokenNames SRIGHTBRACKET comment
+    (13) tokenNames -> . tokenNames COMMA SQM UPPERWORD SQM
+    (14) tokenNames -> . SQM UPPERWORD SQM
+
+    SQM             shift and go to state 55
+
+    tokenNames                     shift and go to state 54
+
+state 43
+
+    (9) ignore -> IGNORE EQUAL CHARACTERS comment .
+
+    TOKENS          reduce using rule 9 (ignore -> IGNORE EQUAL CHARACTERS comment .)
+    RE              reduce using rule 9 (ignore -> IGNORE EQUAL CHARACTERS comment .)
+    YACCMARKER      reduce using rule 9 (ignore -> IGNORE EQUAL CHARACTERS comment .)
+
+
+state 44
+
+    (5) comment -> HASHTAGS words . NEWLINE
+    (7) words -> words . WORD
+
+    NEWLINE         shift and go to state 56
+    WORD            shift and go to state 38
+
+
+state 45
+
+    (22) yacc -> YACCMARKER precedence vars prods PERCENTAGE functionsyacc . inityacc parse
+    (53) functionsyacc -> functionsyacc . functionyacc comment
+    (59) inityacc -> . WORD EQUAL INITYACC comment
+    (55) functionyacc -> . FUNCTION BODYFUNCTIONLINE bodyfunction BODYFUNCTIONFINAL
+
+    WORD            shift and go to state 59
+    FUNCTION        shift and go to state 60
+
+    inityacc                       shift and go to state 57
+    functionyacc                   shift and go to state 58
+
+state 46
+
+    (43) prod -> WORD WORD . expProd LEFTCOTTER CHARS RIGHTCOTTER
+    (44) expProd -> . expProd UPPERWORD
+    (45) expProd -> . expProd WORD
+    (46) expProd -> . expProd SQM CHAR SQM
+    (47) expProd -> . expProd SQM EQUAL SQM
+    (48) expProd -> . expProd SQM LEFTBRACKET SQM
+    (49) expProd -> . expProd SQM RIGHTBRACKET SQM
+    (50) expProd -> . expProd markerPrec
+    (51) expProd -> .
+
+    LEFTCOTTER      reduce using rule 51 (expProd -> .)
+    UPPERWORD       reduce using rule 51 (expProd -> .)
+    WORD            reduce using rule 51 (expProd -> .)
+    SQM             reduce using rule 51 (expProd -> .)
+    PRECTAG         reduce using rule 51 (expProd -> .)
+
+    expProd                        shift and go to state 61
+
+state 47
+
+    (38) var -> CONTENTVAR changeline .
+
+    HASHTAGS        reduce using rule 38 (var -> CONTENTVAR changeline .)
+    CONTENTVAR      reduce using rule 38 (var -> CONTENTVAR changeline .)
+    PERCENTAGE      reduce using rule 38 (var -> CONTENTVAR changeline .)
+    WORD            reduce using rule 38 (var -> CONTENTVAR changeline .)
+
+
+state 48
+
+    (39) changeline -> NEWLINE .
+
+    HASHTAGS        reduce using rule 39 (changeline -> NEWLINE .)
+    CONTENTVAR      reduce using rule 39 (changeline -> NEWLINE .)
+    PERCENTAGE      reduce using rule 39 (changeline -> NEWLINE .)
+    WORD            reduce using rule 39 (changeline -> NEWLINE .)
+
+
+state 49
+
+    (40) changeline -> DOUBLENEWLINE .
+
+    HASHTAGS        reduce using rule 40 (changeline -> DOUBLENEWLINE .)
+    CONTENTVAR      reduce using rule 40 (changeline -> DOUBLENEWLINE .)
+    PERCENTAGE      reduce using rule 40 (changeline -> DOUBLENEWLINE .)
+    WORD            reduce using rule 40 (changeline -> DOUBLENEWLINE .)
+
+
+state 50
+
+    (23) precedence -> PRECEDENCE EQUAL SLEFTBRACKET precedences SRIGHTBRACKET . comment
+    (5) comment -> . HASHTAGS words NEWLINE
+    (6) comment -> .
+
+    HASHTAGS        shift and go to state 30
+    HASHTAG         reduce using rule 6 (comment -> .)
+
+    comment                        shift and go to state 62
+
+state 51
+
+    (25) precedences -> precedences tokenprecedence .
+
+    SRIGHTBRACKET   reduce using rule 25 (precedences -> precedences tokenprecedence .)
+    LEFTBRACKET     reduce using rule 25 (precedences -> precedences tokenprecedence .)
+
+
+state 52
+
+    (27) tokenprecedence -> LEFTBRACKET . rl COMMA nametokensprec RIGHTBRACKET COMMA
+    (28) rl -> . SQM RIGHT SQM
+    (29) rl -> . SQM LEFT SQM
+
+    SQM             shift and go to state 64
+
+    rl                             shift and go to state 63
+
+state 53
+
+    (17) function -> RE LEFTBRACKET . content RIGHTBRACKET comment
+    (18) content -> . SQM UPPERWORD SQM COMMA EXPRESSION
+    (19) content -> . SQM UPPERWORD SQM COMMA WORD
+    (20) content -> . STRING COMMA EXPRESSION
+    (21) content -> . CHARACTERS COMMA EXPRESSION
+
+    SQM             shift and go to state 66
+    STRING          shift and go to state 67
+    CHARACTERS      shift and go to state 68
+
+    content                        shift and go to state 65
+
+state 54
+
+    (11) tokens -> TOKENS EQUAL SLEFTBRACKET tokenNames . SRIGHTBRACKET comment
+    (13) tokenNames -> tokenNames . COMMA SQM UPPERWORD SQM
+
+    SRIGHTBRACKET   shift and go to state 69
+    COMMA           shift and go to state 70
+
+
+state 55
+
+    (14) tokenNames -> SQM . UPPERWORD SQM
+
+    UPPERWORD       shift and go to state 71
+
+
+state 56
+
+    (5) comment -> HASHTAGS words NEWLINE .
+
+    IGNORE          reduce using rule 5 (comment -> HASHTAGS words NEWLINE .)
+    TOKENS          reduce using rule 5 (comment -> HASHTAGS words NEWLINE .)
+    RE              reduce using rule 5 (comment -> HASHTAGS words NEWLINE .)
+    YACCMARKER      reduce using rule 5 (comment -> HASHTAGS words NEWLINE .)
+    PERCENTAGE      reduce using rule 5 (comment -> HASHTAGS words NEWLINE .)
+    WORD            reduce using rule 5 (comment -> HASHTAGS words NEWLINE .)
+    HASHTAG         reduce using rule 5 (comment -> HASHTAGS words NEWLINE .)
+    FUNCTION        reduce using rule 5 (comment -> HASHTAGS words NEWLINE .)
+    $end            reduce using rule 5 (comment -> HASHTAGS words NEWLINE .)
+
+
+state 57
+
+    (22) yacc -> YACCMARKER precedence vars prods PERCENTAGE functionsyacc inityacc . parse
+    (58) parse -> . WORD LEFTBRACKET CHARACTERS RIGHTBRACKET comment
+
+    WORD            shift and go to state 73
+
+    parse                          shift and go to state 72
+
+state 58
+
+    (53) functionsyacc -> functionsyacc functionyacc . comment
+    (5) comment -> . HASHTAGS words NEWLINE
+    (6) comment -> .
+
+    HASHTAGS        shift and go to state 30
+    WORD            reduce using rule 6 (comment -> .)
+    FUNCTION        reduce using rule 6 (comment -> .)
+
+    comment                        shift and go to state 74
+
+state 59
+
+    (59) inityacc -> WORD . EQUAL INITYACC comment
+
+    EQUAL           shift and go to state 75
+
+
+state 60
+
+    (55) functionyacc -> FUNCTION . BODYFUNCTIONLINE bodyfunction BODYFUNCTIONFINAL
+
+    BODYFUNCTIONLINE shift and go to state 76
+
+
+state 61
+
+    (43) prod -> WORD WORD expProd . LEFTCOTTER CHARS RIGHTCOTTER
+    (44) expProd -> expProd . UPPERWORD
+    (45) expProd -> expProd . WORD
+    (46) expProd -> expProd . SQM CHAR SQM
+    (47) expProd -> expProd . SQM EQUAL SQM
+    (48) expProd -> expProd . SQM LEFTBRACKET SQM
+    (49) expProd -> expProd . SQM RIGHTBRACKET SQM
+    (50) expProd -> expProd . markerPrec
+    (52) markerPrec -> . PRECTAG UPPERWORD
+
+    LEFTCOTTER      shift and go to state 78
+    UPPERWORD       shift and go to state 79
+    WORD            shift and go to state 77
+    SQM             shift and go to state 80
+    PRECTAG         shift and go to state 82
+
+    markerPrec                     shift and go to state 81
+
+state 62
+
+    (23) precedence -> PRECEDENCE EQUAL SLEFTBRACKET precedences SRIGHTBRACKET comment .
+
+    HASHTAG         reduce using rule 23 (precedence -> PRECEDENCE EQUAL SLEFTBRACKET precedences SRIGHTBRACKET comment .)
+
+
+state 63
+
+    (27) tokenprecedence -> LEFTBRACKET rl . COMMA nametokensprec RIGHTBRACKET COMMA
+
+    COMMA           shift and go to state 83
+
+
+state 64
+
+    (28) rl -> SQM . RIGHT SQM
+    (29) rl -> SQM . LEFT SQM
+
+    RIGHT           shift and go to state 84
+    LEFT            shift and go to state 85
+
+
+state 65
+
+    (17) function -> RE LEFTBRACKET content . RIGHTBRACKET comment
+
+    RIGHTBRACKET    shift and go to state 86
+
+
+state 66
+
+    (18) content -> SQM . UPPERWORD SQM COMMA EXPRESSION
+    (19) content -> SQM . UPPERWORD SQM COMMA WORD
+
+    UPPERWORD       shift and go to state 87
+
+
+state 67
+
+    (20) content -> STRING . COMMA EXPRESSION
+
+    COMMA           shift and go to state 88
+
+
+state 68
+
+    (21) content -> CHARACTERS . COMMA EXPRESSION
+
+    COMMA           shift and go to state 89
+
+
+state 69
+
+    (11) tokens -> TOKENS EQUAL SLEFTBRACKET tokenNames SRIGHTBRACKET . comment
+    (5) comment -> . HASHTAGS words NEWLINE
+    (6) comment -> .
+
+    HASHTAGS        shift and go to state 30
+    RE              reduce using rule 6 (comment -> .)
+    YACCMARKER      reduce using rule 6 (comment -> .)
+
+    comment                        shift and go to state 90
+
+state 70
+
+    (13) tokenNames -> tokenNames COMMA . SQM UPPERWORD SQM
+
+    SQM             shift and go to state 91
+
+
+state 71
+
+    (14) tokenNames -> SQM UPPERWORD . SQM
+
+    SQM             shift and go to state 92
+
+
+state 72
+
+    (22) yacc -> YACCMARKER precedence vars prods PERCENTAGE functionsyacc inityacc parse .
+
+    $end            reduce using rule 22 (yacc -> YACCMARKER precedence vars prods PERCENTAGE functionsyacc inityacc parse .)
+
+
+state 73
+
+    (58) parse -> WORD . LEFTBRACKET CHARACTERS RIGHTBRACKET comment
+
+    LEFTBRACKET     shift and go to state 93
+
+
+state 74
+
+    (53) functionsyacc -> functionsyacc functionyacc comment .
+
+    WORD            reduce using rule 53 (functionsyacc -> functionsyacc functionyacc comment .)
+    FUNCTION        reduce using rule 53 (functionsyacc -> functionsyacc functionyacc comment .)
+
+
+state 75
+
+    (59) inityacc -> WORD EQUAL . INITYACC comment
+
+    INITYACC        shift and go to state 94
+
+
+state 76
+
+    (55) functionyacc -> FUNCTION BODYFUNCTIONLINE . bodyfunction BODYFUNCTIONFINAL
+    (56) bodyfunction -> . bodyfunction BODYFUNCTIONLINE
+    (57) bodyfunction -> .
+
+    BODYFUNCTIONFINAL reduce using rule 57 (bodyfunction -> .)
+    BODYFUNCTIONLINE reduce using rule 57 (bodyfunction -> .)
+
+    bodyfunction                   shift and go to state 95
+
+state 77
+
+    (45) expProd -> expProd WORD .
+
+    LEFTCOTTER      reduce using rule 45 (expProd -> expProd WORD .)
+    UPPERWORD       reduce using rule 45 (expProd -> expProd WORD .)
+    WORD            reduce using rule 45 (expProd -> expProd WORD .)
+    SQM             reduce using rule 45 (expProd -> expProd WORD .)
+    PRECTAG         reduce using rule 45 (expProd -> expProd WORD .)
+
+
+state 78
+
+    (43) prod -> WORD WORD expProd LEFTCOTTER . CHARS RIGHTCOTTER
+
+    CHARS           shift and go to state 96
+
+
+state 79
+
+    (44) expProd -> expProd UPPERWORD .
+
+    LEFTCOTTER      reduce using rule 44 (expProd -> expProd UPPERWORD .)
+    UPPERWORD       reduce using rule 44 (expProd -> expProd UPPERWORD .)
+    WORD            reduce using rule 44 (expProd -> expProd UPPERWORD .)
+    SQM             reduce using rule 44 (expProd -> expProd UPPERWORD .)
+    PRECTAG         reduce using rule 44 (expProd -> expProd UPPERWORD .)
+
+
+state 80
+
+    (46) expProd -> expProd SQM . CHAR SQM
+    (47) expProd -> expProd SQM . EQUAL SQM
+    (48) expProd -> expProd SQM . LEFTBRACKET SQM
+    (49) expProd -> expProd SQM . RIGHTBRACKET SQM
+
+    CHAR            shift and go to state 97
+    EQUAL           shift and go to state 98
+    LEFTBRACKET     shift and go to state 99
+    RIGHTBRACKET    shift and go to state 100
+
+
+state 81
+
+    (50) expProd -> expProd markerPrec .
+
+    LEFTCOTTER      reduce using rule 50 (expProd -> expProd markerPrec .)
+    UPPERWORD       reduce using rule 50 (expProd -> expProd markerPrec .)
+    WORD            reduce using rule 50 (expProd -> expProd markerPrec .)
+    SQM             reduce using rule 50 (expProd -> expProd markerPrec .)
+    PRECTAG         reduce using rule 50 (expProd -> expProd markerPrec .)
+
+
+state 82
+
+    (52) markerPrec -> PRECTAG . UPPERWORD
+
+    UPPERWORD       shift and go to state 101
+
+
+state 83
+
+    (27) tokenprecedence -> LEFTBRACKET rl COMMA . nametokensprec RIGHTBRACKET COMMA
+    (30) nametokensprec -> . nametokensprec COMMA SQM UPPERWORD SQM
+    (31) nametokensprec -> . nametokensprec COMMA SQM CHAR SQM
+    (32) nametokensprec -> . SQM CHAR SQM
+    (33) nametokensprec -> . SQM UPPERWORD SQM
+
+    SQM             shift and go to state 103
+
+    nametokensprec                 shift and go to state 102
+
+state 84
+
+    (28) rl -> SQM RIGHT . SQM
+
+    SQM             shift and go to state 104
+
+
+state 85
+
+    (29) rl -> SQM LEFT . SQM
+
+    SQM             shift and go to state 105
+
+
+state 86
+
+    (17) function -> RE LEFTBRACKET content RIGHTBRACKET . comment
+    (5) comment -> . HASHTAGS words NEWLINE
+    (6) comment -> .
+
+    HASHTAGS        shift and go to state 30
+    RE              reduce using rule 6 (comment -> .)
+    YACCMARKER      reduce using rule 6 (comment -> .)
+
+    comment                        shift and go to state 106
+
+state 87
+
+    (18) content -> SQM UPPERWORD . SQM COMMA EXPRESSION
+    (19) content -> SQM UPPERWORD . SQM COMMA WORD
+
+    SQM             shift and go to state 107
+
+
+state 88
+
+    (20) content -> STRING COMMA . EXPRESSION
+
+    EXPRESSION      shift and go to state 108
+
+
+state 89
+
+    (21) content -> CHARACTERS COMMA . EXPRESSION
+
+    EXPRESSION      shift and go to state 109
+
+
+state 90
+
+    (11) tokens -> TOKENS EQUAL SLEFTBRACKET tokenNames SRIGHTBRACKET comment .
+
+    RE              reduce using rule 11 (tokens -> TOKENS EQUAL SLEFTBRACKET tokenNames SRIGHTBRACKET comment .)
+    YACCMARKER      reduce using rule 11 (tokens -> TOKENS EQUAL SLEFTBRACKET tokenNames SRIGHTBRACKET comment .)
+
+
+state 91
+
+    (13) tokenNames -> tokenNames COMMA SQM . UPPERWORD SQM
+
+    UPPERWORD       shift and go to state 110
+
+
+state 92
+
+    (14) tokenNames -> SQM UPPERWORD SQM .
+
+    SRIGHTBRACKET   reduce using rule 14 (tokenNames -> SQM UPPERWORD SQM .)
+    COMMA           reduce using rule 14 (tokenNames -> SQM UPPERWORD SQM .)
+
+
+state 93
+
+    (58) parse -> WORD LEFTBRACKET . CHARACTERS RIGHTBRACKET comment
+
+    CHARACTERS      shift and go to state 111
+
+
+state 94
+
+    (59) inityacc -> WORD EQUAL INITYACC . comment
+    (5) comment -> . HASHTAGS words NEWLINE
+    (6) comment -> .
+
+    HASHTAGS        shift and go to state 30
+    WORD            reduce using rule 6 (comment -> .)
+
+    comment                        shift and go to state 112
+
+state 95
+
+    (55) functionyacc -> FUNCTION BODYFUNCTIONLINE bodyfunction . BODYFUNCTIONFINAL
+    (56) bodyfunction -> bodyfunction . BODYFUNCTIONLINE
+
+    BODYFUNCTIONFINAL shift and go to state 114
+    BODYFUNCTIONLINE shift and go to state 113
+
+
+state 96
+
+    (43) prod -> WORD WORD expProd LEFTCOTTER CHARS . RIGHTCOTTER
+
+    RIGHTCOTTER     shift and go to state 115
+
+
+state 97
+
+    (46) expProd -> expProd SQM CHAR . SQM
+
+    SQM             shift and go to state 116
+
+
+state 98
+
+    (47) expProd -> expProd SQM EQUAL . SQM
+
+    SQM             shift and go to state 117
+
+
+state 99
+
+    (48) expProd -> expProd SQM LEFTBRACKET . SQM
+
+    SQM             shift and go to state 118
+
+
+state 100
+
+    (49) expProd -> expProd SQM RIGHTBRACKET . SQM
+
+    SQM             shift and go to state 119
+
+
+state 101
+
+    (52) markerPrec -> PRECTAG UPPERWORD .
+
+    LEFTCOTTER      reduce using rule 52 (markerPrec -> PRECTAG UPPERWORD .)
+    UPPERWORD       reduce using rule 52 (markerPrec -> PRECTAG UPPERWORD .)
+    WORD            reduce using rule 52 (markerPrec -> PRECTAG UPPERWORD .)
+    SQM             reduce using rule 52 (markerPrec -> PRECTAG UPPERWORD .)
+    PRECTAG         reduce using rule 52 (markerPrec -> PRECTAG UPPERWORD .)
+
+
+state 102
+
+    (27) tokenprecedence -> LEFTBRACKET rl COMMA nametokensprec . RIGHTBRACKET COMMA
+    (30) nametokensprec -> nametokensprec . COMMA SQM UPPERWORD SQM
+    (31) nametokensprec -> nametokensprec . COMMA SQM CHAR SQM
+
+    RIGHTBRACKET    shift and go to state 121
+    COMMA           shift and go to state 120
+
+
+state 103
+
+    (32) nametokensprec -> SQM . CHAR SQM
+    (33) nametokensprec -> SQM . UPPERWORD SQM
+
+    CHAR            shift and go to state 122
+    UPPERWORD       shift and go to state 123
+
+
+state 104
+
+    (28) rl -> SQM RIGHT SQM .
+
+    COMMA           reduce using rule 28 (rl -> SQM RIGHT SQM .)
+
+
+state 105
+
+    (29) rl -> SQM LEFT SQM .
+
+    COMMA           reduce using rule 29 (rl -> SQM LEFT SQM .)
+
+
+state 106
+
+    (17) function -> RE LEFTBRACKET content RIGHTBRACKET comment .
+
+    RE              reduce using rule 17 (function -> RE LEFTBRACKET content RIGHTBRACKET comment .)
+    YACCMARKER      reduce using rule 17 (function -> RE LEFTBRACKET content RIGHTBRACKET comment .)
+
+
+state 107
+
+    (18) content -> SQM UPPERWORD SQM . COMMA EXPRESSION
+    (19) content -> SQM UPPERWORD SQM . COMMA WORD
+
+    COMMA           shift and go to state 124
+
+
+state 108
+
+    (20) content -> STRING COMMA EXPRESSION .
+
+    RIGHTBRACKET    reduce using rule 20 (content -> STRING COMMA EXPRESSION .)
+
+
+state 109
+
+    (21) content -> CHARACTERS COMMA EXPRESSION .
+
+    RIGHTBRACKET    reduce using rule 21 (content -> CHARACTERS COMMA EXPRESSION .)
+
+
+state 110
+
+    (13) tokenNames -> tokenNames COMMA SQM UPPERWORD . SQM
+
+    SQM             shift and go to state 125
+
+
+state 111
+
+    (58) parse -> WORD LEFTBRACKET CHARACTERS . RIGHTBRACKET comment
+
+    RIGHTBRACKET    shift and go to state 126
+
+
+state 112
+
+    (59) inityacc -> WORD EQUAL INITYACC comment .
+
+    WORD            reduce using rule 59 (inityacc -> WORD EQUAL INITYACC comment .)
+
+
+state 113
+
+    (56) bodyfunction -> bodyfunction BODYFUNCTIONLINE .
+
+    BODYFUNCTIONFINAL reduce using rule 56 (bodyfunction -> bodyfunction BODYFUNCTIONLINE .)
+    BODYFUNCTIONLINE reduce using rule 56 (bodyfunction -> bodyfunction BODYFUNCTIONLINE .)
+
+
+state 114
+
+    (55) functionyacc -> FUNCTION BODYFUNCTIONLINE bodyfunction BODYFUNCTIONFINAL .
+
+    HASHTAGS        reduce using rule 55 (functionyacc -> FUNCTION BODYFUNCTIONLINE bodyfunction BODYFUNCTIONFINAL .)
+    WORD            reduce using rule 55 (functionyacc -> FUNCTION BODYFUNCTIONLINE bodyfunction BODYFUNCTIONFINAL .)
+    FUNCTION        reduce using rule 55 (functionyacc -> FUNCTION BODYFUNCTIONLINE bodyfunction BODYFUNCTIONFINAL .)
+
+
+state 115
+
+    (43) prod -> WORD WORD expProd LEFTCOTTER CHARS RIGHTCOTTER .
+
+    PERCENTAGE      reduce using rule 43 (prod -> WORD WORD expProd LEFTCOTTER CHARS RIGHTCOTTER .)
+    WORD            reduce using rule 43 (prod -> WORD WORD expProd LEFTCOTTER CHARS RIGHTCOTTER .)
+
+
+state 116
+
+    (46) expProd -> expProd SQM CHAR SQM .
+
+    LEFTCOTTER      reduce using rule 46 (expProd -> expProd SQM CHAR SQM .)
+    UPPERWORD       reduce using rule 46 (expProd -> expProd SQM CHAR SQM .)
+    WORD            reduce using rule 46 (expProd -> expProd SQM CHAR SQM .)
+    SQM             reduce using rule 46 (expProd -> expProd SQM CHAR SQM .)
+    PRECTAG         reduce using rule 46 (expProd -> expProd SQM CHAR SQM .)
+
+
+state 117
+
+    (47) expProd -> expProd SQM EQUAL SQM .
+
+    LEFTCOTTER      reduce using rule 47 (expProd -> expProd SQM EQUAL SQM .)
+    UPPERWORD       reduce using rule 47 (expProd -> expProd SQM EQUAL SQM .)
+    WORD            reduce using rule 47 (expProd -> expProd SQM EQUAL SQM .)
+    SQM             reduce using rule 47 (expProd -> expProd SQM EQUAL SQM .)
+    PRECTAG         reduce using rule 47 (expProd -> expProd SQM EQUAL SQM .)
+
+
+state 118
+
+    (48) expProd -> expProd SQM LEFTBRACKET SQM .
+
+    LEFTCOTTER      reduce using rule 48 (expProd -> expProd SQM LEFTBRACKET SQM .)
+    UPPERWORD       reduce using rule 48 (expProd -> expProd SQM LEFTBRACKET SQM .)
+    WORD            reduce using rule 48 (expProd -> expProd SQM LEFTBRACKET SQM .)
+    SQM             reduce using rule 48 (expProd -> expProd SQM LEFTBRACKET SQM .)
+    PRECTAG         reduce using rule 48 (expProd -> expProd SQM LEFTBRACKET SQM .)
+
+
+state 119
+
+    (49) expProd -> expProd SQM RIGHTBRACKET SQM .
+
+    LEFTCOTTER      reduce using rule 49 (expProd -> expProd SQM RIGHTBRACKET SQM .)
+    UPPERWORD       reduce using rule 49 (expProd -> expProd SQM RIGHTBRACKET SQM .)
+    WORD            reduce using rule 49 (expProd -> expProd SQM RIGHTBRACKET SQM .)
+    SQM             reduce using rule 49 (expProd -> expProd SQM RIGHTBRACKET SQM .)
+    PRECTAG         reduce using rule 49 (expProd -> expProd SQM RIGHTBRACKET SQM .)
+
+
+state 120
+
+    (30) nametokensprec -> nametokensprec COMMA . SQM UPPERWORD SQM
+    (31) nametokensprec -> nametokensprec COMMA . SQM CHAR SQM
+
+    SQM             shift and go to state 127
+
+
+state 121
+
+    (27) tokenprecedence -> LEFTBRACKET rl COMMA nametokensprec RIGHTBRACKET . COMMA
+
+    COMMA           shift and go to state 128
+
+
+state 122
+
+    (32) nametokensprec -> SQM CHAR . SQM
+
+    SQM             shift and go to state 129
+
+
+state 123
+
+    (33) nametokensprec -> SQM UPPERWORD . SQM
+
+    SQM             shift and go to state 130
+
+
+state 124
+
+    (18) content -> SQM UPPERWORD SQM COMMA . EXPRESSION
+    (19) content -> SQM UPPERWORD SQM COMMA . WORD
+
+    EXPRESSION      shift and go to state 131
+    WORD            shift and go to state 132
+
+
+state 125
+
+    (13) tokenNames -> tokenNames COMMA SQM UPPERWORD SQM .
+
+    SRIGHTBRACKET   reduce using rule 13 (tokenNames -> tokenNames COMMA SQM UPPERWORD SQM .)
+    COMMA           reduce using rule 13 (tokenNames -> tokenNames COMMA SQM UPPERWORD SQM .)
+
+
+state 126
+
+    (58) parse -> WORD LEFTBRACKET CHARACTERS RIGHTBRACKET . comment
+    (5) comment -> . HASHTAGS words NEWLINE
+    (6) comment -> .
+
+    HASHTAGS        shift and go to state 30
+    $end            reduce using rule 6 (comment -> .)
+
+    comment                        shift and go to state 133
+
+state 127
+
+    (30) nametokensprec -> nametokensprec COMMA SQM . UPPERWORD SQM
+    (31) nametokensprec -> nametokensprec COMMA SQM . CHAR SQM
+
+    UPPERWORD       shift and go to state 134
+    CHAR            shift and go to state 135
+
+
+state 128
+
+    (27) tokenprecedence -> LEFTBRACKET rl COMMA nametokensprec RIGHTBRACKET COMMA .
+
+    SRIGHTBRACKET   reduce using rule 27 (tokenprecedence -> LEFTBRACKET rl COMMA nametokensprec RIGHTBRACKET COMMA .)
+    LEFTBRACKET     reduce using rule 27 (tokenprecedence -> LEFTBRACKET rl COMMA nametokensprec RIGHTBRACKET COMMA .)
+
+
+state 129
+
+    (32) nametokensprec -> SQM CHAR SQM .
+
+    RIGHTBRACKET    reduce using rule 32 (nametokensprec -> SQM CHAR SQM .)
+    COMMA           reduce using rule 32 (nametokensprec -> SQM CHAR SQM .)
+
+
+state 130
+
+    (33) nametokensprec -> SQM UPPERWORD SQM .
+
+    RIGHTBRACKET    reduce using rule 33 (nametokensprec -> SQM UPPERWORD SQM .)
+    COMMA           reduce using rule 33 (nametokensprec -> SQM UPPERWORD SQM .)
+
+
+state 131
+
+    (18) content -> SQM UPPERWORD SQM COMMA EXPRESSION .
+
+    RIGHTBRACKET    reduce using rule 18 (content -> SQM UPPERWORD SQM COMMA EXPRESSION .)
+
+
+state 132
+
+    (19) content -> SQM UPPERWORD SQM COMMA WORD .
+
+    RIGHTBRACKET    reduce using rule 19 (content -> SQM UPPERWORD SQM COMMA WORD .)
+
+
+state 133
+
+    (58) parse -> WORD LEFTBRACKET CHARACTERS RIGHTBRACKET comment .
+
+    $end            reduce using rule 58 (parse -> WORD LEFTBRACKET CHARACTERS RIGHTBRACKET comment .)
+
+
+state 134
+
+    (30) nametokensprec -> nametokensprec COMMA SQM UPPERWORD . SQM
+
+    SQM             shift and go to state 136
+
+
+state 135
+
+    (31) nametokensprec -> nametokensprec COMMA SQM CHAR . SQM
+
+    SQM             shift and go to state 137
+
+
+state 136
+
+    (30) nametokensprec -> nametokensprec COMMA SQM UPPERWORD SQM .
+
+    RIGHTBRACKET    reduce using rule 30 (nametokensprec -> nametokensprec COMMA SQM UPPERWORD SQM .)
+    COMMA           reduce using rule 30 (nametokensprec -> nametokensprec COMMA SQM UPPERWORD SQM .)
+
+
+state 137
+
+    (31) nametokensprec -> nametokensprec COMMA SQM CHAR SQM .
+
+    RIGHTBRACKET    reduce using rule 31 (nametokensprec -> nametokensprec COMMA SQM CHAR SQM .)
+    COMMA           reduce using rule 31 (nametokensprec -> nametokensprec COMMA SQM CHAR SQM .)
+

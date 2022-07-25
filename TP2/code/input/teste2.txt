@@ -1,0 +1,50 @@
+%%LEX
+%ignore = " \t\n"
+%tokens =['DELIM_ABRIR','SEPARATOR','NUM','PAL','DELIM_FECHAR']
+
+\[ return ('DELIM_ABRIR', t.value)         
+, return ('SEPARATOR', t.value)            
+[0-9]+ return ('NUM', t.value)                  
+[a-zA-Z]+ return ('PAL', t.value)                  
+\] return ('DELIM_FECHAR', t.value)         
+
+
+.           error(f"carater ilegal: ', t.value[0]", t.lexer.skip(1)) 
+
+
+
+
+
+%%YACC
+# comentario inteligente
+comp = 0
+soma = 0
+counting = False
+output = 0
+operacao = 1             
+
+
+
+
+lista : DELIM_ABRIR listaa                      {print(soma)}
+listaa : lcont DELIM_FECHAR                     {#nothing }
+listaa : DELIM_FECHAR                           {#nothing }
+lcont : NUM lcontt                              {comp += 1 }
+lcont : PAL lcontt                              {comp += 1;if p[1] == 'start':soma += p[2]}
+lcontt : SEPARATOR NUM lcontt                    {comp += 1;p[0] = int(p[2]) + p[3]}
+lcontt : SEPARATOR PAL lcontt                    {comp += 1;p[0] = 0;if p[2] == "start": soma += p[3]; }
+lcontt :                                        {p[0] = 0}
+
+%%
+
+def p_error(p):
+    print ("Error:",p)
+
+ya=yacc()
+ya.parse("[1,2,4,start,1,2,end]")
+
+
+
+
+
+
